@@ -1,0 +1,202 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 40 38% 97%;
+    --foreground: 165 26% 12%;
+    --card: 0 0% 100%;
+    --card-foreground: 165 26% 12%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 165 26% 12%;
+    --primary: 166 62% 21%;
+    --primary-foreground: 40 40% 98%;
+    --secondary: 164 20% 94%;
+    --secondary-foreground: 166 40% 18%;
+    --muted: 40 22% 94%;
+    --muted-foreground: 165 10% 38%;
+    --accent: 32 92% 50%;
+    --accent-foreground: 22 60% 12%;
+    --destructive: 4 72% 46%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 165 12% 88%;
+    --input: 165 12% 86%;
+    --ring: 166 62% 21%;
+    --chart-1: 168 58% 30%;
+    --chart-2: 32 92% 50%;
+    --chart-3: 232 45% 45%;
+    --chart-4: 190 50% 40%;
+    --chart-5: 28 80% 50%;
+    --radius: 1rem;
+
+    /* Saarthi status tokens — always paired with icon + text, never colour alone */
+    --likely: 166 58% 24%;
+    --check: 38 92% 38%;
+    --paper: 232 48% 42%;
+    --nothere: 220 8% 40%;
+    --stale: 28 90% 40%;
+    --whatsapp: 142 70% 36%;
+
+    /* Layout system — the only place widths and gutters are defined */
+    --sidebar-w: 264px;
+    --content-max: 1100px;
+    --gutter: 1rem;
+    --tabbar-h: 64px;
+
+    --font-heading: 'Fraunces', 'Noto Sans Devanagari', Georgia, serif;
+    --font-body: 'Inter', 'Noto Sans Devanagari', system-ui, -apple-system, sans-serif;
+    --font-display: 'Fraunces', 'Noto Sans Devanagari', Georgia, serif;
+    --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+
+    --sidebar-background: 40 38% 97%;
+    --sidebar-foreground: 165 20% 24%;
+    --sidebar-primary: 166 62% 21%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 164 20% 94%;
+    --sidebar-accent-foreground: 166 40% 18%;
+    --sidebar-border: 165 12% 88%;
+    --sidebar-ring: 166 62% 21%;
+  }
+
+  .dark {
+    --background: 168 22% 8%;
+    --foreground: 40 30% 96%;
+    --card: 168 20% 11%;
+    --card-foreground: 40 30% 96%;
+    --popover: 168 20% 11%;
+    --popover-foreground: 40 30% 96%;
+    --primary: 164 52% 62%;
+    --primary-foreground: 168 30% 8%;
+    --secondary: 168 16% 18%;
+    --secondary-foreground: 40 30% 96%;
+    --muted: 168 14% 18%;
+    --muted-foreground: 165 10% 68%;
+    --accent: 32 90% 56%;
+    --accent-foreground: 22 60% 10%;
+    --destructive: 4 62% 52%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 168 12% 22%;
+    --input: 168 12% 24%;
+    --ring: 164 52% 62%;
+    --likely: 164 48% 62%;
+    --check: 38 88% 62%;
+    --paper: 232 70% 74%;
+    --nothere: 220 8% 66%;
+    --stale: 28 90% 60%;
+    --sidebar-background: 168 22% 8%;
+    --sidebar-foreground: 40 30% 96%;
+    --sidebar-primary: 164 52% 62%;
+    --sidebar-primary-foreground: 168 30% 8%;
+    --sidebar-accent: 168 16% 18%;
+    --sidebar-accent-foreground: 40 30% 96%;
+    --sidebar-border: 168 12% 22%;
+    --sidebar-ring: 164 52% 62%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    font-size: 16px;
+  }
+
+  /* Type scale grows with the room, so a projector reading is comfortable */
+  @media (min-width: 1024px) {
+    html {
+      font-size: 17px;
+    }
+    :root {
+      --gutter: 2rem;
+    }
+  }
+
+  @media (min-width: 1920px) {
+    html {
+      font-size: 18px;
+    }
+  }
+
+  @media (min-width: 768px) and (max-width: 1023px) {
+    :root {
+      --gutter: 1.5rem;
+      --content-max: 720px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+
+  h1, h2, h3 {
+    @apply font-heading;
+    letter-spacing: -0.015em;
+  }
+
+  ::selection {
+    background: hsl(var(--accent) / 0.25);
+  }
+}
+
+@layer utilities {
+  .safe-bottom {
+    padding-bottom: calc(env(safe-area-inset-bottom, 0px));
+  }
+
+  .tap {
+    min-height: 48px;
+    min-width: 48px;
+  }
+
+  .paper-grain {
+    background-image:
+      radial-gradient(circle at 18% 12%, hsl(var(--accent) / 0.07), transparent 42%),
+      radial-gradient(circle at 88% 4%, hsl(var(--primary) / 0.09), transparent 46%);
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .rise {
+    animation: rise 0.42s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+}

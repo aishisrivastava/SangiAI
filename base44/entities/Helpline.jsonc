@@ -1,0 +1,62 @@
+{
+  "name": "Helpline",
+  "type": "object",
+  "properties": {
+    "helpline_id": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "number": {
+      "type": "string"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "note_en": {
+      "type": "string"
+    },
+    "source_url": {
+      "type": "string"
+    },
+    "verified_date": {
+      "type": "string"
+    },
+    "provenance": {
+      "type": "string",
+      "enum": [
+        "verified",
+        "curated_sample"
+      ]
+    }
+  },
+  "required": [
+    "helpline_id",
+    "name",
+    "number",
+    "tags",
+    "source_url"
+  ],
+  "rls": {
+    "read": {},
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

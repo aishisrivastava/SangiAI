@@ -1,0 +1,80 @@
+{
+  "name": "Corridor",
+  "type": "object",
+  "properties": {
+    "corridor_id": {
+      "type": "string"
+    },
+    "origin_state": {
+      "type": "string"
+    },
+    "origin_lang": {
+      "type": "string"
+    },
+    "destination_city": {
+      "type": "string"
+    },
+    "destination_state": {
+      "type": "string"
+    },
+    "clerk_lang": {
+      "type": "string"
+    },
+    "languages": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "notes_en": {
+      "type": "string"
+    },
+    "offices": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "labour_office",
+              "csc",
+              "police",
+              "hospital"
+            ]
+          },
+          "maps_query": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "corridor_id",
+    "origin_state",
+    "destination_city",
+    "destination_state"
+  ],
+  "rls": {
+    "read": {},
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

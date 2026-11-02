@@ -1,0 +1,35 @@
+{
+  "name": "AnalyticsEvent",
+  "type": "object",
+  "properties": {
+    "kind": {
+      "type": "string"
+    },
+    "lang": {
+      "type": "string"
+    },
+    "corridor_id": {
+      "type": "string"
+    },
+    "intent": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "kind"
+  ],
+  "rls": {
+    "read": {},
+    "create": {},
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

@@ -1,0 +1,156 @@
+{
+  "name": "Scheme",
+  "type": "object",
+  "properties": {
+    "scheme_id": {
+      "type": "string"
+    },
+    "name_en": {
+      "type": "string"
+    },
+    "name_hi": {
+      "type": "string"
+    },
+    "category": {
+      "type": "string"
+    },
+    "portability": {
+      "type": "string",
+      "enum": [
+        "portable",
+        "destination_only",
+        "origin_only",
+        "routed_out"
+      ]
+    },
+    "portability_note_en": {
+      "type": "string"
+    },
+    "summary_en": {
+      "type": "string"
+    },
+    "summary_hi": {
+      "type": "string"
+    },
+    "documents": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "steps_en": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "required_fields": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "eligibility_rules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "field": {
+            "type": "string"
+          },
+          "op": {
+            "type": "string",
+            "enum": [
+              "eq",
+              "neq",
+              "in",
+              "nin"
+            ]
+          },
+          "value": {
+            "type": "string"
+          },
+          "label_en": {
+            "type": "string"
+          },
+          "label_hi": {
+            "type": "string"
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "profile",
+              "document",
+              "blocker"
+            ]
+          }
+        }
+      }
+    },
+    "benefit_amount": {
+      "type": "number"
+    },
+    "benefit_note_en": {
+      "type": "string"
+    },
+    "benefit_note_hi": {
+      "type": "string"
+    },
+    "official_portal": {
+      "type": "string"
+    },
+    "verified_date": {
+      "type": "string"
+    },
+    "provenance": {
+      "type": "string",
+      "enum": [
+        "verified",
+        "curated_sample"
+      ]
+    },
+    "office_types": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "helpline_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "corridor_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "scheme_id",
+    "name_en",
+    "portability",
+    "summary_en",
+    "official_portal"
+  ],
+  "rls": {
+    "read": {},
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}
